@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#F9F7F2">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Свадебное приглашение Алексея и Карины. 14 августа 2026, банкетный зал «Облака», Казань.">
+
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="apple-touch-icon" href="./favicon.png">
+
+  <!-- CSP: на GitHub Pages нет HTTP-headers, поэтому через meta -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+
+  <title>Алексей и Карина — 14.08.2026</title>
+
+  <!-- Open Graph / Telegram, WhatsApp, ВКонтакте -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alexeykarina.ru/">
+  <meta property="og:title" content="Алексей и Карина — 14 августа 2026">
+  <meta property="og:description" content="Будем рады разделить с вами наш самый главный день.">
+  <meta property="og:image" content="https://alexeykarina.ru/assets/images/envelope-cover.webp">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1920">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Алексей и Карина — 14 августа 2026">
+  <meta name="twitter:description" content="Будем рады разделить с вами наш самый главный день.">
+  <meta name="twitter:image" content="https://alexeykarina.ru/assets/images/envelope-cover.webp">
+
+  <!-- Preload критичных ассетов welcome-экрана -->
+  <link rel="preload" as="image" href="./assets/images/envelope-cover.webp?v=34" type="image/webp" fetchpriority="high">
+  <link rel="prefetch" href="./assets/video/intro-video.mp4?v=34" as="fetch" crossorigin>
+
+  <link rel="stylesheet" href="./assets/css/tailwind.min.css?v=34">
+  <link rel="stylesheet" href="./assets/fonts/fonts.css?v=34">
+  <link rel="stylesheet" href="./assets/css/styles.css?v=34">
+</head>
+<body class="text-ink antialiased">
+
+  <!-- ============== ВИДЕОФОН (два слоя + кроссфейд для бесшовного цикла) ============== -->
+  <video id="bg-video-a" class="bg-video is-active"
+         muted playsinline preload="auto"
+         aria-hidden="true">
+    <source src="./assets/video/hero-bg.mp4?v=34" type="video/mp4">
+  </video>
+  <video id="bg-video-b" class="bg-video"
+         muted playsinline preload="auto"
+         aria-hidden="true">
+    <source src="./assets/video/hero-bg.mp4?v=34" type="video/mp4">
+  </video>
+  <div class="bg-overlay"></div>
+
+  <!-- ============== ВЕЛКОМ ============== -->
+  <div id="welcome" class="welcome" role="button" tabindex="0" aria-label="Открыть приглашение">
+    <img id="env-cover" class="env-cover"
+         src="./assets/images/envelope-cover.webp?v=34"
+         alt="приглашение"
+         fetchpriority="high"
+         decoding="async" />
+    <video id="env-video" class="env-video"
+           muted playsinline preload="auto">
+      <source src="./assets/video/intro-video.mp4?v=34" type="video/mp4">
+    </video>
+    <div id="env-hint" class="env-hint">нажмите, чтобы открыть</div>
+  </div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+    <div class="reveal">
+      <p class="eyebrow eyebrow-light mb-6">Save the date</p>
+      <h1 class="hero-names font-serif text-white">
+        <span class="hero-name">Алексей</span>
+        <span class="hero-amp font-serif">&amp;</span>
+        <span class="hero-name">Карина</span>
+      </h1>
+      <div class="ornament hero-ornament my-8">
+        <span class="font-serif">наша свадьба</span>
+      </div>
+      <p class="eyebrow eyebrow-light">
+        14 &middot; 08 &middot; 2026
+      </p>
+    </div>
+
+    <a href="#countdown" class="absolute bottom-8 text-white/70 hover:text-white transition" aria-label="К расписанию">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+           class="animate-bounce">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- ============== COUNTDOWN ============== -->
+  <section id="countdown" class="section-card py-24 sm:py-32 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="reveal">
+        <p class="eyebrow mb-4">До торжества</p>
+        <h2 class="section-title font-serif">осталось совсем немного</h2>
+      </div>
+
+      <div id="timer" class="reveal grid grid-cols-4 gap-3 sm:gap-6">
+        <div class="timer-cell rounded-sm py-6 sm:py-8">
+          <div id="t-days"  class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">дней</div>
+        </div>
+        <div class="timer-cell rounded-sm py-6 sm:py-8">
+          <div id="t-hours" class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">часов</div>
+        </div>
+        <div class="timer-cell rounded-sm py-6 sm:py-8">
+          <div id="t-mins"  class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">минут</div>
+        </div>
+        <div class="timer-cell rounded-sm py-6 sm:py-8">
+          <div id="t-secs"  class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">секунд</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TIMELINE ============== -->
+  <section id="schedule" class="section-card section-card-tinted py-24 sm:py-32 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="reveal text-center mb-16">
+        <p class="eyebrow mb-4">Программа дня</p>
+        <h2 class="section-title font-serif">расписание</h2>
+      </div>
+
+      <div class="relative">
+        <div class="absolute left-6 sm:left-1/2 top-2 bottom-2 w-px bg-gold/30 sm:-translate-x-1/2"></div>
+
+        <div class="reveal relative pl-16 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-8 mb-12">
+          <div class="absolute left-6 sm:left-1/2 top-3 -translate-x-1/2">
+            <div class="tl-dot relative w-3 h-3 rounded-full bg-gold"></div>
+          </div>
+          <div class="sm:text-right sm:pr-10">
+            <div class="font-serif text-3xl text-gold">17:00</div>
+          </div>
+          <div class="sm:pl-10">
+            <h3 class="font-serif text-2xl mb-1">Сбор гостей</h3>
+            <p class="text-muted text-sm leading-relaxed">Welcome-зона с лёгкими закусками и аперитивом</p>
+          </div>
+        </div>
+
+        <div class="reveal relative pl-16 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-8 mb-12">
+          <div class="absolute left-6 sm:left-1/2 top-3 -translate-x-1/2">
+            <div class="tl-dot relative w-3 h-3 rounded-full bg-gold"></div>
+          </div>
+          <div class="sm:text-right sm:pr-10">
+            <div class="font-serif text-3xl text-gold">17:30</div>
+          </div>
+          <div class="sm:pl-10">
+            <h3 class="font-serif text-2xl mb-1">Церемония</h3>
+            <p class="text-muted text-sm leading-relaxed">Главный момент — обмен клятвами под открытым небом</p>
+          </div>
+        </div>
+
+        <div class="reveal relative pl-16 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-8">
+          <div class="absolute left-6 sm:left-1/2 top-3 -translate-x-1/2">
+            <div class="tl-dot relative w-3 h-3 rounded-full bg-gold"></div>
+          </div>
+          <div class="sm:text-right sm:pr-10">
+            <div class="font-serif text-3xl text-gold">18:00</div>
+          </div>
+          <div class="sm:pl-10">
+            <h3 class="font-serif text-2xl mb-1">Банкет</h3>
+            <p class="text-muted text-sm leading-relaxed">Ужин, тосты, музыка и танцы до поздней ночи</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== EVENT DETAILS ============== -->
+  <section class="section-card py-24 sm:py-32 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <p class="eyebrow mb-4">Join us</p>
+        <h2 class="section-title font-serif mb-6">Детали события</h2>
+        <p class="text-muted leading-relaxed max-w-lg mx-auto">
+          Не можем дождаться, чтобы разделить с вами этот особенный день.
+          Здесь собрано всё, что нужно знать.
+        </p>
+      </div>
+
+      <div class="reveal event-card">
+        <div class="event-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 2l1.8 5.4L19 8l-4.2 3 1.4 5.4L12 13.5 7.8 16.4 9.2 11 5 8l5.2-.6L12 2z"/>
+          </svg>
+        </div>
+        <h3 class="event-title font-serif">Свадебная церемония</h3>
+
+        <div class="event-photo">
+          <img src="./assets/images/venue.webp?v=34" alt="Банкетный зал «Облака»" loading="lazy" />
+        </div>
+
+        <div class="event-row">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3 2"/>
+          </svg>
+          <span>17:00</span>
+        </div>
+
+        <div class="event-row">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <span>Банкетный зал «Облака»</span>
+        </div>
+
+        <p class="event-address">
+          ул. 2-я Старо-Аракчинская, 11к3, Казань
+        </p>
+
+        <p class="event-desc">
+          Присоединяйтесь к нам, когда мы обменяемся клятвами в кругу самых близких.
+        </p>
+
+        <div class="event-buttons">
+          <a class="event-btn" target="_blank" rel="noopener"
+             href="https://yandex.ru/maps/org/oblaka/60389374185/?ll=48.966195%2C55.800816&pt=48.966178%2C55.800812&z=17.2">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M3 11l18-8-8 18-2-8-8-2z"/>
+            </svg>
+            Открыть в Картах
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== DRESS CODE ============== -->
+  <section class="section-card py-24 sm:py-32 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="reveal">
+        <p class="eyebrow mb-4">Дресс-код</p>
+        <h2 class="section-title font-serif mb-6">Cocktail Attire</h2>
+        <p class="text-muted leading-relaxed max-w-lg mx-auto mb-12">
+          Нам будет особенно приятно, если вы поддержите эстетику дня и выберете наряд
+          в палитре торжества. Длинные платья, костюмы пастельных оттенков —
+          приветствуются, но необязательно.
+        </p>
+      </div>
+
+      <div class="reveal palette grid grid-cols-3 sm:grid-cols-6 gap-x-4 gap-y-8 max-w-3xl mx-auto">
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#F2EAD3"></div>
+          <span class="palette-label">Слоновая&nbsp;кость</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#E8DFCB"></div>
+          <span class="palette-label">Бежевый</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#D6B7A8"></div>
+          <span class="palette-label">Пыльно-розовый</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#C8B8D1"></div>
+          <span class="palette-label">Лавандовый</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#A8B7C0"></div>
+          <span class="palette-label">Пыльно-голубой</span>
+        </div>
+        <div class="palette-item">
+          <div class="palette-swatch" style="background:#7A8463"></div>
+          <span class="palette-label">Оливковый</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ПОДАРКИ ============== -->
+  <section class="section-card py-24 sm:py-32 px-6">
+    <div class="max-w-xl mx-auto reveal text-center">
+      <p class="eyebrow mb-4">Gifts</p>
+      <h2 class="section-title font-serif mb-6">Подарки</h2>
+      <p class="text-muted leading-relaxed max-w-md mx-auto">
+        Ваше присутствие для нас — лучший подарок.
+        Но если вам хочется поддержать наше начало семейной жизни,
+        мы будем благодарны за любой жест внимания.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== RSVP ============== -->
+  <section id="rsvp" class="section-card section-card-tinted py-24 sm:py-32 px-6">
+    <div class="max-w-xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <p class="eyebrow mb-4">Подтверждение</p>
+        <h2 class="section-title font-serif mb-4">Будем рады вас видеть</h2>
+        <p class="text-muted text-sm">Пожалуйста, подтвердите ваше присутствие до 20 июля 2026 года</p>
+      </div>
+
+      <form id="rsvp-form" class="reveal space-y-8" novalidate>
+        <div>
+          <label for="rsvp-name" class="text-xs tracking-[0.25em] uppercase text-muted">Ваше имя</label>
+          <input id="rsvp-name" type="text" name="name" placeholder="Имя и фамилия"
+                 autocomplete="name" class="mt-2" />
+          <p data-error="name" class="form-error hidden" role="alert"></p>
+        </div>
+
+        <!-- honeypot: скрытое поле; реальные пользователи его не заполнят -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="rsvp-website">Сайт (не заполнять)</label>
+          <input id="rsvp-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <fieldset>
+          <legend class="text-xs tracking-[0.25em] uppercase text-muted block mb-3">Сможете ли прийти?</legend>
+          <div class="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Сможете ли прийти">
+            <label class="radio-card rounded-sm py-4 text-center text-sm" tabindex="0" role="radio" aria-checked="false">
+              <input type="radio" name="attend" value="yes" class="hidden" tabindex="-1">
+              <span class="font-serif text-lg">Да, с радостью</span>
+            </label>
+            <label class="radio-card rounded-sm py-4 text-center text-sm" tabindex="0" role="radio" aria-checked="false">
+              <input type="radio" name="attend" value="no" class="hidden" tabindex="-1">
+              <span class="font-serif text-lg">К сожалению, нет</span>
+            </label>
+          </div>
+          <p data-error="attend" class="form-error hidden" role="alert"></p>
+        </fieldset>
+
+        <!-- Дополнительные поля — появляются только при ответе "Да" -->
+        <div id="rsvp-extras" class="rsvp-extras" aria-hidden="true">
+          <div>
+            <label for="rsvp-plus-ones" class="text-xs tracking-[0.25em] uppercase text-muted">Ваши спутники</label>
+            <input id="rsvp-plus-ones" type="text" name="plus_ones"
+                   placeholder="Если будете с парой или семьёй — укажите имена"
+                   class="mt-2" />
+            <p class="form-helper">Чтобы заранее накрыть всем места и подобрать угощение</p>
+          </div>
+
+          <div>
+            <label for="rsvp-track" class="text-xs tracking-[0.25em] uppercase text-muted">Любимый трек</label>
+            <input id="rsvp-track" type="text" name="track"
+                   placeholder="Название и исполнитель"
+                   class="mt-2" />
+            <p class="form-helper">Поставим во время банкета — пусть вечер звучит и вашими нотами</p>
+          </div>
+
+          <div>
+            <label for="rsvp-wishes" class="text-xs tracking-[0.25em] uppercase text-muted">Пожелания и комментарии</label>
+            <textarea id="rsvp-wishes" name="wishes" rows="3"
+                      placeholder="Аллергии, предпочтения, тёплые слова — всё, что хотите нам передать"
+                      class="mt-2"></textarea>
+          </div>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-ink text-cream py-4 tracking-[0.3em] uppercase text-xs hover:bg-gold transition-colors duration-500">
+          Отправить
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============== QUESTIONS? ============== -->
+  <section class="section-card py-24 sm:py-32 px-6">
+    <div class="max-w-xl mx-auto text-center">
+      <div class="reveal">
+        <p class="eyebrow mb-4">Questions?</p>
+        <h2 class="section-title font-serif mb-6">Остались вопросы?</h2>
+        <p class="text-muted leading-relaxed max-w-md mx-auto mb-10">
+          Если что-то осталось неясным — мы всегда рядом. Свяжитесь с нами
+          любым удобным способом.
+        </p>
+      </div>
+
+      <div class="reveal flex flex-col sm:flex-row gap-3 justify-center">
+        <a class="contact-btn" href="tel:+79518916698">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M22 16.92V21a1 1 0 0 1-1.1 1A19.9 19.9 0 0 1 2 3.1 1 1 0 0 1 3 2h4.09a1 1 0 0 1 1 .75l1.2 4.4a1 1 0 0 1-.27 1L7.5 9.85a16 16 0 0 0 6.64 6.64l1.7-1.52a1 1 0 0 1 1-.27l4.4 1.2a1 1 0 0 1 .76 1z"/>
+          </svg>
+          Позвонить
+        </a>
+        <a class="contact-btn" href="https://t.me/kervv1" target="_blank" rel="noopener">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.61 7.6c-.12.55-.44.68-.89.42l-2.46-1.81-1.19 1.14c-.13.13-.24.24-.49.24l.18-2.5 4.55-4.11c.2-.18-.04-.28-.31-.1l-5.62 3.54-2.42-.76c-.53-.16-.54-.53.11-.78l9.45-3.64c.44-.16.83.1.69.76z"/>
+          </svg>
+          Telegram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="section-card section-card-tinted footer">
+    <div class="footer-inner">
+      <div class="ornament mb-6">
+        <span class="font-serif text-2xl">A <span class="footer-amp">&amp;</span> K</span>
+      </div>
+      <p class="font-serif text-xl mb-2">Алексей и Карина</p>
+      <p class="eyebrow mb-8">14 августа 2026</p>
+
+      <nav class="footer-nav">
+        <a href="#countdown">Таймер</a>
+        <span>·</span>
+        <a href="#schedule">Расписание</a>
+        <span>·</span>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+
+      <p class="footer-copy">
+        © 2026 · с любовью сделано для наших гостей
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============== MUSIC FAB ============== -->
+  <button id="music-btn" type="button" aria-label="Включить или выключить музыку" aria-pressed="false"
+    class="fab-shadow fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-ink text-cream
+           flex items-center justify-center hover:bg-gold transition-colors duration-500">
+    <svg id="icon-note" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+    <span id="icon-wave" class="wave hidden" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </span>
+  </button>
+
+  <audio id="audio" src="./assets/audio/music.mp3?v=34" loop preload="none"></audio>
+
+  <!-- ============== THANK YOU MODAL ============== -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-bg px-6"
+       role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-text" aria-hidden="true">
+    <div class="bg-cream max-w-md w-full p-10 sm:p-12 text-center relative rounded-sm"
+         style="border:1px solid rgba(166,139,91,0.3);">
+      <button id="modal-close" type="button" class="absolute top-4 right-4 text-muted hover:text-ink" aria-label="Закрыть">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M6 6l12 12M6 18L18 6"/>
+        </svg>
+      </button>
+      <div class="ornament mb-6" aria-hidden="true">
+        <span class="font-serif text-sm">с любовью</span>
+      </div>
+      <h3 id="modal-title" class="section-title font-serif mb-4">Спасибо!</h3>
+      <p id="modal-text" class="text-muted leading-relaxed">
+        Мы получили ваш ответ и ждём встречи с вами 14 августа.
+      </p>
+    </div>
+  </div>
+
+  <script src="./assets/js/bg-video.js?v=34" defer></script>
+  <script src="./assets/js/envelope.js?v=34" defer></script>
+  <script src="./assets/js/countdown.js?v=34" defer></script>
+  <script src="./assets/js/reveal.js?v=34" defer></script>
+  <script src="./assets/js/music.js?v=34" defer></script>
+  <script src="./assets/js/rsvp.js?v=34" defer></script>
+</body>
+</html>

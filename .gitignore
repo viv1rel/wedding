@@ -1,0 +1,13 @@
+# Локальные секреты — НЕ коммитить
+.env
+.env.local
+
+# Originals (тяжёлые исходники аудио/видео — не нужны на проде)
+_backup/
+
+# IDE / OS
+.idea/
+.vscode/
+.claude/
+.DS_Store
+Thumbs.db
