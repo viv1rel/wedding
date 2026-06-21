@@ -32,6 +32,7 @@
 
   function dismissWelcome() {
     welcome.classList.add('hidden-welcome');
+    document.body.classList.add('welcome-done');
     setTimeout(() => { document.body.style.overflow = ''; }, 1100);
   }
 
@@ -48,7 +49,6 @@
       return;
     }
 
-    // страховка: если 'ended' не сработает — гасим оверлей принудительно
     const safetyTimer = setTimeout(dismissWelcome, 12000);
 
     const onEnded = () => {
@@ -73,7 +73,7 @@
       }
     };
 
-    if (introVideo.readyState >= 2 /* HAVE_CURRENT_DATA */) {
+    if (introVideo.readyState >= 2) {
       tryPlay();
     } else {
       introVideo.addEventListener('canplay', tryPlay, { once: true });

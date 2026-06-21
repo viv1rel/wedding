@@ -8,15 +8,13 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Свадебное приглашение Алексея и Карины. 14 августа 2026, банкетный зал «Облака», Казань.">
 
-  <link rel="icon" type="image/png" href="./favicon.png">
-  <link rel="apple-touch-icon" href="./favicon.png">
+  <link rel="icon" type="image/png" href="./favicon.png?v=41">
+  <link rel="apple-touch-icon" href="./favicon.png?v=41">
 
-  <!-- CSP: на GitHub Pages нет HTTP-headers, поэтому через meta -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; base-uri 'self'; form-action 'self'; object-src 'none'">
 
   <title>Алексей и Карина — 14.08.2026</title>
 
-  <!-- Open Graph / Telegram, WhatsApp, ВКонтакте -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alexeykarina.ru/">
   <meta property="og:title" content="Алексей и Карина — 14 августа 2026">
@@ -30,46 +28,42 @@
   <meta name="twitter:description" content="Будем рады разделить с вами наш самый главный день.">
   <meta name="twitter:image" content="https://alexeykarina.ru/assets/images/envelope-cover.webp">
 
-  <!-- Preload критичных ассетов welcome-экрана -->
-  <link rel="preload" as="image" href="./assets/images/envelope-cover.webp?v=34" type="image/webp" fetchpriority="high">
-  <link rel="prefetch" href="./assets/video/intro-video.mp4?v=34" as="fetch" crossorigin>
+  <link rel="preload" as="image" href="./assets/images/envelope-cover.webp?v=41" type="image/webp" fetchpriority="high">
+  <link rel="prefetch" href="./assets/video/intro-video.mp4?v=41">
 
-  <link rel="stylesheet" href="./assets/css/tailwind.min.css?v=34">
-  <link rel="stylesheet" href="./assets/fonts/fonts.css?v=34">
-  <link rel="stylesheet" href="./assets/css/styles.css?v=34">
+  <link rel="stylesheet" href="./assets/css/tailwind.min.css?v=41">
+  <link rel="stylesheet" href="./assets/fonts/fonts.css?v=41">
+  <link rel="stylesheet" href="./assets/css/styles.css?v=41">
 </head>
 <body class="text-ink antialiased">
 
-  <!-- ============== ВИДЕОФОН (два слоя + кроссфейд для бесшовного цикла) ============== -->
   <video id="bg-video-a" class="bg-video is-active"
          muted playsinline preload="auto"
          aria-hidden="true">
-    <source src="./assets/video/hero-bg.mp4?v=34" type="video/mp4">
+    <source src="./assets/video/hero-bg.mp4?v=41" type="video/mp4">
   </video>
   <video id="bg-video-b" class="bg-video"
-         muted playsinline preload="auto"
+         muted playsinline preload="metadata"
          aria-hidden="true">
-    <source src="./assets/video/hero-bg.mp4?v=34" type="video/mp4">
+    <source src="./assets/video/hero-bg.mp4?v=41" type="video/mp4">
   </video>
   <div class="bg-overlay"></div>
 
-  <!-- ============== ВЕЛКОМ ============== -->
   <div id="welcome" class="welcome" role="button" tabindex="0" aria-label="Открыть приглашение">
     <img id="env-cover" class="env-cover"
-         src="./assets/images/envelope-cover.webp?v=34"
+         src="./assets/images/envelope-cover.webp?v=41"
          alt="приглашение"
          fetchpriority="high"
          decoding="async" />
     <video id="env-video" class="env-video"
            muted playsinline preload="auto">
-      <source src="./assets/video/intro-video.mp4?v=34" type="video/mp4">
+      <source src="./assets/video/intro-video.mp4?v=41" type="video/mp4">
     </video>
     <div id="env-hint" class="env-hint">нажмите, чтобы открыть</div>
   </div>
 
-  <!-- ============== HERO ============== -->
   <section class="hero min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
-    <div class="reveal">
+    <div class="hero-content">
       <p class="eyebrow eyebrow-light mb-6">Save the date</p>
       <h1 class="hero-names font-serif text-white">
         <span class="hero-name">Алексей</span>
@@ -84,16 +78,18 @@
       </p>
     </div>
 
-    <a href="#countdown" class="scroll-hint absolute bottom-8 text-white/70 hover:text-white transition" aria-label="Листайте вниз">
-      <span class="scroll-hint-text">листайте вниз</span>
-      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
-           class="animate-bounce">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
-    </a>
+    <div class="scroll-hint absolute">
+      <a href="#rsvp" class="scroll-hint-rsvp">не забудьте заполнить анкету внизу</a>
+      <a href="#countdown" class="scroll-hint-arrow text-white/70 hover:text-white transition" aria-label="Листайте вниз">
+        <span class="scroll-hint-text">листайте вниз</span>
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+             class="animate-bounce">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+    </div>
   </section>
 
-  <!-- ============== COUNTDOWN ============== -->
   <section id="countdown" class="section-card py-24 sm:py-32 px-6">
     <div class="max-w-3xl mx-auto text-center">
       <div class="reveal">
@@ -103,26 +99,25 @@
 
       <div id="timer" class="reveal grid grid-cols-4 gap-3 sm:gap-6">
         <div class="timer-cell rounded-sm py-6 sm:py-8">
-          <div id="t-days"  class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div id="t-days"  class="timer-num font-serif text-3xl sm:text-5xl text-ink">0</div>
           <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">дней</div>
         </div>
         <div class="timer-cell rounded-sm py-6 sm:py-8">
-          <div id="t-hours" class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div id="t-hours" class="timer-num font-serif text-3xl sm:text-5xl text-ink">0</div>
           <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">часов</div>
         </div>
         <div class="timer-cell rounded-sm py-6 sm:py-8">
-          <div id="t-mins"  class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div id="t-mins"  class="timer-num font-serif text-3xl sm:text-5xl text-ink">0</div>
           <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">минут</div>
         </div>
         <div class="timer-cell rounded-sm py-6 sm:py-8">
-          <div id="t-secs"  class="font-serif text-3xl sm:text-5xl text-ink">0</div>
+          <div id="t-secs"  class="timer-num font-serif text-3xl sm:text-5xl text-ink">0</div>
           <div class="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-muted mt-2">секунд</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============== TIMELINE ============== -->
   <section id="schedule" class="section-card section-card-tinted py-24 sm:py-32 px-6">
     <div class="max-w-2xl mx-auto">
       <div class="reveal text-center mb-16">
@@ -175,7 +170,6 @@
     </div>
   </section>
 
-  <!-- ============== EVENT DETAILS ============== -->
   <section class="section-card py-24 sm:py-32 px-6">
     <div class="max-w-2xl mx-auto">
       <div class="reveal text-center mb-12">
@@ -196,7 +190,7 @@
         <h3 class="event-title font-serif">Свадебная церемония</h3>
 
         <div class="event-photo">
-          <img src="./assets/images/venue.webp?v=34" alt="Банкетный зал «Облака»" loading="lazy" />
+          <img src="./assets/images/venue.webp?v=41" alt="Банкетный зал «Облака»" loading="lazy" />
         </div>
 
         <div class="event-row">
@@ -236,7 +230,6 @@
     </div>
   </section>
 
-  <!-- ============== DRESS CODE ============== -->
   <section class="section-card py-24 sm:py-32 px-6">
     <div class="max-w-2xl mx-auto text-center">
       <div class="reveal">
@@ -278,7 +271,6 @@
     </div>
   </section>
 
-  <!-- ============== ПОДАРКИ ============== -->
   <section class="section-card py-24 sm:py-32 px-6">
     <div class="max-w-xl mx-auto reveal text-center">
       <p class="eyebrow mb-4">Gifts</p>
@@ -291,7 +283,6 @@
     </div>
   </section>
 
-  <!-- ============== RSVP ============== -->
   <section id="rsvp" class="section-card section-card-tinted py-24 sm:py-32 px-6">
     <div class="max-w-xl mx-auto">
       <div class="reveal text-center mb-12">
@@ -308,7 +299,6 @@
           <p data-error="name" class="form-error hidden" role="alert"></p>
         </div>
 
-        <!-- honeypot: скрытое поле; реальные пользователи его не заполнят -->
         <div class="hp-field" aria-hidden="true">
           <label for="rsvp-website">Сайт (не заполнять)</label>
           <input id="rsvp-website" type="text" name="website" tabindex="-1" autocomplete="off" />
@@ -329,7 +319,6 @@
           <p data-error="attend" class="form-error hidden" role="alert"></p>
         </fieldset>
 
-        <!-- Дополнительные поля — появляются только при ответе "Да" -->
         <div id="rsvp-extras" class="rsvp-extras" aria-hidden="true">
           <div>
             <label for="rsvp-plus-ones" class="text-xs tracking-[0.25em] uppercase text-muted">Ваши спутники</label>
@@ -363,7 +352,6 @@
     </div>
   </section>
 
-  <!-- ============== QUESTIONS? ============== -->
   <section class="section-card py-24 sm:py-32 px-6">
     <div class="max-w-xl mx-auto text-center">
       <div class="reveal">
@@ -382,9 +370,29 @@
           </svg>
           Позвонить
         </a>
+        <a class="contact-btn" href="https://max.ru/u/f9LHodD0cOIlmixiMm6AO64zGILDOPmkvYG0mKtiKpuyLl6wp6Y9qTZkgYU" target="_blank" rel="noopener">
+          <svg class="max-icon" aria-hidden="true" viewBox="0 0 44 44" width="18" height="18">
+            <defs>
+              <linearGradient id="max-grad" x1="6" y1="4" x2="38" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#06affb"/>
+                <stop offset="0.5" stop-color="#001cf1"/>
+                <stop offset="1" stop-color="#8900ac"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#max-grad)" fill-rule="evenodd" clip-rule="evenodd" d="M22.39 41.89c-3.93 0-5.75-.58-8.9-2.9-2.02 2.61-8.34 4.63-8.62 1.17 0-2.6-.58-4.8-1.22-7.2C2.87 30 2 26.72 2 21.94 2 10.56 11.28 2 22.28 2c11 0 19.63 8.98 19.63 20.06 0 11.07-8.9 19.83-19.52 19.83Zm.2-30.02c-5.22-.27-9.3 3.37-10.2 9.08-.74 4.72.58 10.48 1.7 10.77.54.13 1.9-.98 2.74-1.82 1.39.9 2.97 1.6 4.73 1.7a9.96 9.96 0 0 0 10.4-9.34 10 10 0 0 0-9.37-10.39Z"/>
+          </svg>
+          MAX
+        </a>
         <a class="contact-btn" href="https://t.me/kervv1" target="_blank" rel="noopener">
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.61 7.6c-.12.55-.44.68-.89.42l-2.46-1.81-1.19 1.14c-.13.13-.24.24-.49.24l.18-2.5 4.55-4.11c.2-.18-.04-.28-.31-.1l-5.62 3.54-2.42-.76c-.53-.16-.54-.53.11-.78l9.45-3.64c.44-.16.83.1.69.76z"/>
+          <svg class="tg-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+            <defs>
+              <linearGradient id="tg-grad" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#2AABEE"/>
+                <stop offset="1" stop-color="#229ED9"/>
+              </linearGradient>
+            </defs>
+            <circle cx="12" cy="12" r="10" fill="url(#tg-grad)"/>
+            <path fill="#ffffff" d="M16.64 8.8l-1.61 7.6c-.12.55-.44.68-.89.42l-2.46-1.81-1.19 1.14c-.13.13-.24.24-.49.24l.18-2.5 4.55-4.11c.2-.18-.04-.28-.31-.1l-5.62 3.54-2.42-.76c-.53-.16-.54-.53.11-.78l9.45-3.64c.44-.16.83.1.69.76z"/>
           </svg>
           Telegram
         </a>
@@ -392,7 +400,6 @@
     </div>
   </section>
 
-  <!-- ============== FOOTER ============== -->
   <footer class="section-card section-card-tinted footer">
     <div class="footer-inner">
       <div class="ornament mb-6">
@@ -415,7 +422,6 @@
     </div>
   </footer>
 
-  <!-- ============== MUSIC FAB ============== -->
   <button id="music-btn" type="button" aria-label="Включить или выключить музыку" aria-pressed="false"
     class="fab-shadow fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-ink text-cream
            flex items-center justify-center hover:bg-gold transition-colors duration-500">
@@ -429,9 +435,8 @@
     </span>
   </button>
 
-  <audio id="audio" src="./assets/audio/music.mp3?v=34" loop preload="none"></audio>
+  <audio id="audio" src="./assets/audio/music.mp3?v=41" loop preload="none"></audio>
 
-  <!-- ============== THANK YOU MODAL ============== -->
   <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-bg px-6"
        role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-text" aria-hidden="true">
     <div class="bg-cream max-w-md w-full p-10 sm:p-12 text-center relative rounded-sm"
@@ -451,11 +456,12 @@
     </div>
   </div>
 
-  <script src="./assets/js/bg-video.js?v=34" defer></script>
-  <script src="./assets/js/envelope.js?v=34" defer></script>
-  <script src="./assets/js/countdown.js?v=34" defer></script>
-  <script src="./assets/js/reveal.js?v=34" defer></script>
-  <script src="./assets/js/music.js?v=34" defer></script>
-  <script src="./assets/js/rsvp.js?v=34" defer></script>
+  <script src="./assets/js/bg-video.js?v=41" defer></script>
+  <script src="./assets/js/envelope.js?v=41" defer></script>
+  <script src="./assets/js/countdown.js?v=41" defer></script>
+  <script src="./assets/js/reveal.js?v=41" defer></script>
+  <script src="./assets/js/palette.js?v=41" defer></script>
+  <script src="./assets/js/music.js?v=41" defer></script>
+  <script src="./assets/js/rsvp.js?v=41" defer></script>
 </body>
 </html>

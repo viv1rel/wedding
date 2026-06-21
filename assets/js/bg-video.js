@@ -39,7 +39,6 @@
   }
 
   function onEnded(e) {
-    // страховка на случай, если timeupdate не сработал до конца ролика
     if (e.target === active && !swapping) {
       try { e.target.currentTime = 0; } catch (_) {}
       tryPlay(e.target);
@@ -50,6 +49,11 @@
   b.addEventListener('timeupdate', onTimeUpdate);
   a.addEventListener('ended', onEnded);
   b.addEventListener('ended', onEnded);
+
+  a.addEventListener('playing', function upgradeInactive() {
+    b.preload = 'auto';
+    try { b.load(); } catch (_) {}
+  }, { once: true });
 
   tryPlay(a);
 

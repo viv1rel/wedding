@@ -13,17 +13,25 @@
 
   let timerId = null;
 
+  function setVal(el, val) {
+    if (el.textContent === val) return;
+    el.textContent = val;
+    el.classList.remove('tick');
+    void el.offsetWidth;
+    el.classList.add('tick');
+  }
+
   function tick() {
     const diff = target - Date.now();
     if (diff <= 0) {
-      els.d.textContent = els.h.textContent = els.m.textContent = els.s.textContent = '00';
+      setVal(els.d, '00'); setVal(els.h, '00'); setVal(els.m, '00'); setVal(els.s, '00');
       if (timerId) clearInterval(timerId);
       return;
     }
-    els.d.textContent = pad(Math.floor(diff / 86400000));
-    els.h.textContent = pad(Math.floor(diff / 3600000) % 24);
-    els.m.textContent = pad(Math.floor(diff / 60000) % 60);
-    els.s.textContent = pad(Math.floor(diff / 1000) % 60);
+    setVal(els.d, pad(Math.floor(diff / 86400000)));
+    setVal(els.h, pad(Math.floor(diff / 3600000) % 24));
+    setVal(els.m, pad(Math.floor(diff / 60000) % 60));
+    setVal(els.s, pad(Math.floor(diff / 1000) % 60));
   }
 
   tick();

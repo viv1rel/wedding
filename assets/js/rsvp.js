@@ -12,7 +12,7 @@
   const plusOnesInput = form.querySelector('input[name="plus_ones"]');
   const trackInput = form.querySelector('input[name="track"]');
   const wishesInput = form.querySelector('textarea[name="wishes"]');
-  const websiteInput = form.querySelector('input[name="website"]'); // honeypot
+  const websiteInput = form.querySelector('input[name="website"]');
   const extrasBlock = document.getElementById('rsvp-extras');
 
   const errorEls = {
@@ -127,7 +127,6 @@
       return;
     }
 
-    // honeypot: бот заполнил скрытое поле → молча «принимаем» без отправки
     if (websiteInput && websiteInput.value.trim()) {
       openModal(attendValue);
       form.reset();
